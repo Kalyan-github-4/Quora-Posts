@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quora Posts</title>
+    <style>
+        :root {
+            --quora-red: #b92b27;
+            --quora-blue: #2b6dad;
+            --light-gray: #f1f2f2;
+            --medium-gray: #e4e6e8;
+            --dark-gray: #636466;
+            --text-dark: #2e2e2e;
+            --text-light: #939598;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: var(--quora-red);
+            margin: 30px 0;
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        /* Post Container */
+        .post-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.2s ease;
+            position: relative;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .post-container:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: transparent;
+        }
+        
+        /* Post Header */
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--medium-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: var(--quora-blue);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .post-user-info {
+            flex-grow: 1;
+        }
+        
+        .post-username {
+            color: var(--quora-blue);
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        
+        .post-time {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+        
+        /* Post Content */
+        .post-content {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            padding: 0 8px;
+        }
+        
+        /* Post Actions */
+        .post-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            border-top: 1px solid var(--medium-gray);
+            padding-top: 16px;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+        
+        .action-btn:hover {
+            background-color: var(--light-gray);
+            color: var(--quora-red);
+        }
+        
+        .action-btn i {
+            font-size: 18px;
+        }
+        
+        .delete-form {
+            display: inline;
+        }
+        
+        .delete-btn {
+            background: none;
+            border: none;
+            color: var(--dark-gray);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .delete-btn:hover {
+            background-color: var(--light-gray);
+            color: var(--quora-red);
+        }
+        
+        /* New Post Button */
+        .new-post-btn {
+            display: block;
+            background-color: var(--quora-red);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px 24px;
+            border-radius: 4px;
+            margin: 40px auto 20px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+            width: fit-content;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .new-post-btn:hover {
+            background-color: #9a2521;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+                margin: 20px 0;
+            }
+            
+            .post-container {
+                padding: 18px;
+            }
+            
+            .post-content {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <h1>Quora Posts</h1>
+
+    <% for(post of posts) { %>
+        <div class="post-container">
+            <div class="post-header">
+                <div class="user-avatar"><%= post.username.charAt(0).toUpperCase() %></div>
+                <div class="post-user-info">
+                    <div class="post-username">@<%= post.username %></div>
+                    <div class="post-time">Posted just now</div>
+                </div>
+            </div>
+            
+            <div class="post-content"><%= post.content %></div>
+            
+            <div class="post-actions">
+                <a href="/posts/<%=post.id%>" class="action-btn">
+                    <i class="far fa-eye"></i> View
+                </a>
+                <a href="/posts/<%=post.id%>/edit" class="action-btn">
+                    <i class="far fa-edit"></i> Edit
+                </a>
+                <form action="/posts/<%=post.id%>?_method=DELETE" method="post" class="delete-form">
+                    <button type="submit" class="delete-btn">
+                        <i class="far fa-trash-alt"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    <% } %>
+
+    <a href="/posts/new" class="new-post-btn">
+        <i class="fas fa-plus"></i> Create new post
+    </a>
+</body>
+</html>

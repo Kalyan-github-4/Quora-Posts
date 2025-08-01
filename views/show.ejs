@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post | Quora Clone</title>
+    <link rel="stylesheet" href="/css/show.css">
+</head>
+<body>
+    <div class="edit-post-container">
+        <div class="edit-post-header">
+            <h2>Edit Your Post</h2>
+            <h3>@<%= post.username %></h3>
+        </div>
+        
+        <form class="edit-post-form" action="/posts/<%= post.id %>?_method=PATCH" method="post">
+            <textarea name="content" placeholder="What would you like to edit?"><%= post.content %></textarea>
+            <button type="submit">Update Post</button>
+        </form>
+    </div>
+</body>
+</html>

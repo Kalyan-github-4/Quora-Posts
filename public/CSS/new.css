@@ -1,0 +1,108 @@
+/* Form Styling */
+:root {
+    --quora-red: #b92b27;
+    --quora-blue: #2b6dad;
+    --light-gray: #f1f2f2;
+    --medium-gray: #e4e6e8;
+    --dark-gray: #636466;
+    --text-dark: #2e2e2e;
+    --text-light: #939598;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+form {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+}
+
+h3 {
+    color: var(--quora-red);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--quora-blue);
+    box-shadow: 0 0 0 2px rgba(43, 109, 173, 0.2);
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+button {
+    background-color: var(--quora-red);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: #9a2521;
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+        margin: 15px;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    input[type="text"],
+    textarea {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    
+    button {
+        padding: 10px 15px;
+    }
+}

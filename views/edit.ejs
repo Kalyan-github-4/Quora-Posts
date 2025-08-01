@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post | Quora Clone</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Typography */
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        /* Layout */
+        .edit-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+        }
+        
+        /* Header */
+        .edit-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .edit-header h2 {
+            color: #b92b27;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .edit-header h3 {
+            color: #2b6dad;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Form Elements */
+        .edit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .edit-form textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 20px;
+            border: 2px solid #e4e6e8;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+        
+        .edit-form textarea:focus {
+            outline: none;
+            border-color: #2b6dad;
+            box-shadow: 0 0 0 4px rgba(43, 109, 173, 0.1);
+        }
+        
+        .edit-form button {
+            background-color: #b92b27;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-end;
+        }
+        
+        .edit-form button:hover {
+            background-color: #9a2521;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .edit-container {
+                padding: 30px;
+                margin: 20px auto;
+            }
+            
+            .edit-header h2 {
+                font-size: 24px;
+            }
+            
+            .edit-form textarea {
+                min-height: 200px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .edit-container {
+                padding: 20px;
+            }
+            
+            .edit-form textarea {
+                min-height: 150px;
+            }
+            
+            .edit-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="edit-container">
+        <div class="edit-header">
+            <h2>Edit Your Post</h2>
+            <h3>@<%= post.username %></h3>
+        </div>
+        
+        <form class="edit-form" action="/posts/<%= post.id %>?_method=PATCH" method="post">
+            <textarea name="content" placeholder="Edit your post content here..."><%= post.content %></textarea>
+            <button type="submit">Update Post</button>
+        </form>
+    </div>
+</body>
+</html>
