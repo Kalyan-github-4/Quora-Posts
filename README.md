@@ -2,7 +2,7 @@
 
 A simple web application to simulate basic functionalities of a Q&A post platform like Quora. Built using **Node.js**, **Express.js**, and **EJS**.
 
-![Screenshot](./screenshots/preview.png)
+![Screenshot](https://github.com/Kalyan-github-4/Quora-Posts/blob/main/Screenshot%202025-08-01%20184349.png?raw=true)
 
 ---
 
